@@ -14,7 +14,7 @@ spring:
         format_sql: true
   thymeleaf:
     prefix: classpath:/templates/
-    suffix: .html:
+    suffix: .html
 logging.level:
   org.hibernate.SQL: debug
 # org.hibernate.type: trace
