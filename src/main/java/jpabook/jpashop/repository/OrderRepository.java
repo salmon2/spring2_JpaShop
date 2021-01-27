@@ -1,13 +1,6 @@
 package jpabook.jpashop.repository;
 
-<<<<<<< HEAD
-import jpabook.jpashop.domain.Order;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import java.awt.*;
-=======
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import lombok.RequiredArgsConstructor;
@@ -19,25 +12,13 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> 2edda7109950a6895274c7ca56dc808164ccf90d
+
 
 @Repository
 @RequiredArgsConstructor
 public class OrderRepository {
     private final EntityManager em;
-<<<<<<< HEAD
 
-    public void save(Order order){
-        em.persist(order);
-    }
-
-    public Order findOne(Long id){
-        return em.find(Order.class, id);
-    }
-
-//    public List<Order> findALL(OrderSearch orderSearch){}
-
-=======
     public void save(Order order) {
         em.persist(order);
     }
@@ -71,5 +52,5 @@ public class OrderRepository {
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대1000건
         return query.getResultList();
     }
->>>>>>> 2edda7109950a6895274c7ca56dc808164ccf90d
+
 }
