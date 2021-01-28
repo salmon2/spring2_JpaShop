@@ -62,17 +62,19 @@ public class ItemController {
     }
 
     @PostMapping("items/{itemId}/edit")
-    public String updateItem(@PathVariable("itemId")String itemId, @ModelAttribute("form")BookForm form) {
+    public String updateItem(@PathVariable("itemId")Long itemId, @ModelAttribute("form")BookForm form) {
         Book book = new Book();
 
-        book.setId(form.getId());
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
+        //db에 갔다온놈 준영속 객체 영속성 컨테이너가 더이상 관리 x
+        //jpa 관리 x, 영속 상태 엔티티 jpa가 변경 감지
+//        book.setId(form.getId());
+//        book.setName(form.getName());
+//        book.setPrice(form.getPrice());
+//        book.setStockQuantity(form.getStockQuantity());
+//        book.setAuthor(form.getAuthor());
+//        book.setIsbn(form.getIsbn());
+        itemService.updateItem(itemId, form.getName(),form.getPrice(), form.getStockQuantity());
 
-        itemService.saveItem(book);
         return "redirect:/items";
     }
 

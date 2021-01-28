@@ -18,8 +18,9 @@ public class ItemRepository {
             em.persist(item);
         }
         //기존 디비에 있는거니까 업데이트
+        //
         else{
-            em.merge(item);
+            Item merge = em.merge(item);
         }
     }
 
