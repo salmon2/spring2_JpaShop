@@ -83,6 +83,7 @@ public class MemberApiController {
     class MemberDto {
         private Long id;
         private String name;
+
     }
 
 
