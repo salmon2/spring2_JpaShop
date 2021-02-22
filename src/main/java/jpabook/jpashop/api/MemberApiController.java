@@ -62,6 +62,7 @@ public class MemberApiController {
     }
 
 
+
     @Data
     @AllArgsConstructor
     class Result<T>{
@@ -81,7 +82,6 @@ public class MemberApiController {
         //생성자 쓰지말것 쓰면 안돌아감
     }
 
-
     @Data
     static class CreateMemberResponse {
         public CreateMemberResponse(Long id) {
@@ -89,7 +89,6 @@ public class MemberApiController {
         }
         private Long id;
     }
-
     @Data
     static class UpdateMemberResponse {
         private Long id;
@@ -100,11 +99,8 @@ public class MemberApiController {
             this.name = name;
         }
     }
-
     @Data
     static class UpdateMemberRequest {
         private String name;
     }
-
-
 }
