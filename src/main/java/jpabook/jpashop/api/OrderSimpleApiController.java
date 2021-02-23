@@ -6,8 +6,6 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
-import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
-import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +26,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderSimpleApiController {
     private final OrderRepository orderRepository;
-    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     @GetMapping("/api/v1/simple-orders")
     public List<Order> ordersV1(){
@@ -53,7 +50,7 @@ public class OrderSimpleApiController {
 
         return new Result(collect.size(), collect);
     }
-    //재사용 가능, 그러나 다끌고 온다.
+
     @GetMapping("/api/v3/simple-orders")
     public Result orderV3(){
         List<Order> orders = orderRepository.findAllWithMemberDelivery();
@@ -62,13 +59,10 @@ public class OrderSimpleApiController {
                 .collect(Collectors.toList());
         return new Result(collect.size(), collect);
     }
-
-    //dto로 바로 jpql 결과를 바로 변한
-    //재사용 빡셈, 성능으 v3보다 좋다.필요하것만 들고옴
-    @GetMapping("/api/v4/simple-orders")
-    public List<OrderSimpleQueryDto> orderV4(){
-        return orderSimpleQueryRepository.findOrderDtos();
-    }
+//    @GetMapping("/api/v4/simple-orders")
+//    public List<SimpleOrderDto> orderV4(){
+//        return orderRepository.findOrderDtos();
+//    }
 
     @Data
     @AllArgsConstructor
