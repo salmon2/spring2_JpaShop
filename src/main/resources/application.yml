@@ -12,6 +12,8 @@ spring:
       hibernate:
         # show_sql: true
         format_sql: true
+        # 값 만큼 미리 땡겨놓는다.
+        default_batch_fetch_size: 100
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
